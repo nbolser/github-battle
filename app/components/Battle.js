@@ -4,7 +4,6 @@ var PropTypes = require("prop-types");
 class PlayerInput extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       username: ""
     };
@@ -24,9 +23,9 @@ class PlayerInput extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault;
+    event.preventDefault();
 
-    this.props.onSubmit(this.props.id, this.props.username);
+    this.props.onSubmit(this.props.id, this.state.username);
   }
 
   render() {
@@ -61,15 +60,18 @@ PlayerInput.propTypes = {
   onSubmit: PropTypes.func.isRequired
 };
 
+PlayerInput.defaultProps = {
+  label: "Username"
+};
+
 class Battle extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       playerOneName: "",
       playerTwoName: "",
-      playerOneImage: "",
-      playerTwoImage: ""
+      playerOneImage: null,
+      playerTwoImage: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -79,7 +81,7 @@ class Battle extends React.Component {
       var newState = {};
       newState[id + "Name"] = username;
       newState[id + "Image"] =
-        "https::/github.com/" + username + ".png?size=200";
+        "https://github.com/" + username + ".png?size=200";
       return newState;
     });
   }
