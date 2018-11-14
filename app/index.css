@@ -121,7 +121,7 @@ a {
   display: flex;
   flex-direction: column;
   width: 500px;
-  align-text: center;
+  text-align: center;
 }
 
 .column input {
